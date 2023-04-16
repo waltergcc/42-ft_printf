@@ -1,47 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*   ft_print_address.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/16 01:07:48 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/16 12:15:01 by wcorrea-         ###   ########.fr       */
+/*   Created: 2023/04/16 12:46:20 by wcorrea-          #+#    #+#             */
+/*   Updated: 2023/04/16 13:31:15 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void	ft_put_hex(unsigned int n, const char format)
+int	ft_address_len(unsigned long long n)
+{
+	int	count;
+
+	count = 0;
+	while (n)
+	{
+		count++;
+		n /= 16;
+	}
+	return (count);
+}
+
+void	ft_put_address(unsigned long long n)
 {
 	if (n >= 16)
 	{
-		ft_put_hex(n / 16, format);
-		ft_put_hex(n % 16, format);
+		ft_put_address(n / 16);
+		ft_put_address(n % 16);
 	}
 	else
 	{
 		if (n <= 9)
 			ft_putchar_fd((n + '0'), 1);
 		else
-		{
-			if (format == 'x')
-				ft_putchar_fd((n - 10 + 'a'), 1);
-			else if (format == 'X')
-				ft_putchar_fd((n - 10 + 'A'), 1);
-		}
+			ft_putchar_fd((n - 10 + 'a'), 1);
 	}
 }
 
-int	ft_print_hex(unsigned int n, const char format)
+int	ft_print_address(unsigned long long n)
 {
+	int	len;
+
+	len = 0;
 	if (n == 0)
-	{
-		ft_putchar('0');
-		return (1);
-	}
+		len += ft_print_str("(nil)");
 	else
-		ft_put_hex(n, format);
-	return (ft_nbrlen(n, 16));
+	{
+		len += ft_print_str("0x");
+		ft_put_address(n);
+		len += ft_address_len(n);
+	}
+	return (len);
 }

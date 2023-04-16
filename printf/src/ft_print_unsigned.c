@@ -1,47 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/16 01:07:48 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/16 12:15:01 by wcorrea-         ###   ########.fr       */
+/*   Created: 2023/04/16 12:08:37 by wcorrea-          #+#    #+#             */
+/*   Updated: 2023/04/16 12:40:34 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void	ft_put_hex(unsigned int n, const char format)
+char	*ft_uitoa(unsigned int n)
 {
-	if (n >= 16)
+	char		*str;
+	int			i;
+
+	i = ft_nbrlen(n, 10);
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if ((!str))
+		return (NULL);
+	str[i--] = '\0';
+	while (n)
 	{
-		ft_put_hex(n / 16, format);
-		ft_put_hex(n % 16, format);
+		str[i--] = n % 10 + '0';
+		n /= 10;
 	}
-	else
-	{
-		if (n <= 9)
-			ft_putchar_fd((n + '0'), 1);
-		else
-		{
-			if (format == 'x')
-				ft_putchar_fd((n - 10 + 'a'), 1);
-			else if (format == 'X')
-				ft_putchar_fd((n - 10 + 'A'), 1);
-		}
-	}
+	return (str);
 }
 
-int	ft_print_hex(unsigned int n, const char format)
+int	ft_print_unsigned(unsigned int n)
 {
+	int		len;
+	char	*nbr;
+
+	len = 0;
 	if (n == 0)
 	{
 		ft_putchar('0');
 		return (1);
 	}
 	else
-		ft_put_hex(n, format);
-	return (ft_nbrlen(n, 16));
+	{
+		nbr = ft_uitoa(n);
+		len = ft_print_str(nbr);
+		free(nbr);
+	}
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:50:38 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/16 02:02:33 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/16 13:13:28 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ int	ft_formats(va_list args, const char format)
 		buffer += ft_print_nbr(va_arg(args, int));
 	else if (format == 'x' || format == 'X')
 		buffer += ft_print_hex(va_arg(args, unsigned int), format);
+	else if (format == 'u')
+		buffer += ft_print_unsigned(va_arg(args, unsigned int));
+	else if (format == 'p')
+		buffer += ft_print_address(va_arg(args, unsigned long long));
+	else if (format == '%')
+		buffer += ft_print_percent();
 	return (buffer);
 }
 

@@ -6,12 +6,25 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:56:42 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/16 00:35:40 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/16 12:14:11 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+int	ft_nbrlen(unsigned int n, unsigned int base)
+{
+	int	count;
+
+	count = 0;
+	while (n)
+	{
+		count++;
+		n /= base;
+	}
+	return (count);
+}
 
 int	ft_print_percent(void)
 {

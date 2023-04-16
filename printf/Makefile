@@ -6,7 +6,7 @@
 #    By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 01:34:02 by wcorrea-          #+#    #+#              #
-#    Updated: 2023/04/16 11:07:39 by wcorrea-         ###   ########.fr        #
+#    Updated: 2023/04/16 12:55:06 by wcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ FT_EXTRA = libft/ft_memalloc.c libft/ft_memccpy.c libft/ft_memdel.c \
 
 LIBFT = ${FT_IS} ${FT_TO} ${FT_PUT} ${FT_MEM} ${FT_LST} ${FT_STR} ${FT_EXTRA}
 
-PRINFT = src/ft_printf.c src/ft_print_std.c src/ft_print_hex.c
+PRINFT = src/ft_printf.c src/ft_print_std.c src/ft_print_hex.c \
+		src/ft_print_unsigned.c src/ft_print_address.c
 
 SRC = ${PRINFT} ${LIBFT}
 

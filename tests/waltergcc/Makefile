@@ -6,11 +6,13 @@
 #    By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 01:34:02 by wcorrea-          #+#    #+#              #
-#    Updated: 2023/04/16 11:15:17 by wcorrea-         ###   ########.fr        #
+#    Updated: 2023/04/16 14:20:47 by wcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ../printf/libftprintf.a
+PRINTF_PATH = ../../printf
+
+NAME = ${PRINTF_PATH}/libftprintf.a
 
 TEST = main.c
 
@@ -19,18 +21,16 @@ OUT = ${TEST:.c=}
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
-INCLUDE = -I ../printf/include
+INCLUDE = -I ${PRINTF_PATH}/include
 MAKE = make -C
 
-PRINTF_MAKEFILE = ../printf
-
 all:	fclean all
-		${MAKE} ${PRINTF_MAKEFILE} all
+		${MAKE} ${PRINTF_PATH} all
 		${CC} ${CFLAGS} ${INCLUDE} ${TEST} ${NAME} -o ${OUT}
-		${MAKE} ${PRINTF_MAKEFILE} fclean
+		${MAKE} ${PRINTF_PATH} fclean
 
 fclean:
-		${MAKE} ${PRINTF_MAKEFILE} fclean
+		${MAKE} ${PRINTF_PATH} fclean
 		${RM} main
 		
 .PHONY: all clean fclean re
