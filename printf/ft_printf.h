@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:54:53 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/16 13:36:42 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:32:05 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <stdio.h>
+# include "libft/libft.h"
 
 int		ft_printf(const char *str, ...);
 int		ft_formats(va_list args, const char format);

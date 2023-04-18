@@ -6,12 +6,11 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 00:24:18 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/16 13:32:50 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:35:53 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	main(void)
 {

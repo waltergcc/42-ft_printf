@@ -6,12 +6,11 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 12:46:20 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/16 13:31:15 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:32:32 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	ft_address_len(unsigned long long n)
 {

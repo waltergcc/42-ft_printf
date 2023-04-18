@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:36:31 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/18 01:13:37 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:11:41 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
 # include <stdio.h>
 
 typedef struct s_list
