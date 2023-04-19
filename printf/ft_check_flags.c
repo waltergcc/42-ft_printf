@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 14:49:57 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 12:54:52 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 00:23:35 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_flags	*ft_flags_list(void)
 	list->minus = 0;
 	list->zero = 0;
 	list->dot = 0;
+	list->numbers = 0;
 	return (list);
 }
 
@@ -46,6 +47,7 @@ void	ft_formation_flags(const char *str, size_t *i, t_flags *flags)
 		flags->precision = n;
 	else
 		flags->width = n;
+	flags->numbers = 1;
 }
 
 t_flags	*ft_check_flags(const char *str, size_t *i)

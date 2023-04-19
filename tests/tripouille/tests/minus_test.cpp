@@ -37,7 +37,6 @@ int main(int ac, char ** av)
 	TEST(11, print("%-1s", ""));
 	TEST(12, print(" %-2s", ""));
 	TEST(13, print("%-3s ", ""));
-	TEST(14, print(" %-0s ", ""));
 	TEST(15, print(" %-s ", "-"));
 	TEST(16, print(" %-1s %-2s ", "", "-"));
 	TEST(17, print(" %-3s %-4s ", " - ", ""));

@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:54:53 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 17:15:19 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 00:22:53 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_flags
 	int	dot;
 	int	width;
 	int	precision;
+	int	numbers;
 }		t_flags;
 
 

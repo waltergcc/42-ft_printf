@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 12:46:20 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 19:05:19 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/19 23:26:11 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_print_address(unsigned long long n, t_flags *flags)
 		ft_put_address(n);
 		len += ft_address_len(n);
 		if (flags->minus)
-			len += ft_print_justify(flags, ft_address_len(n));
+			len += ft_print_justify(flags, ft_address_len(n) + 2);
 	}
 	return (len);
 }
