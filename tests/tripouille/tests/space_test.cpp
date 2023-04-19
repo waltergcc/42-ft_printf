@@ -24,8 +24,8 @@ int main(int ac, char ** av)
 		printTestNumber(av[1], TEST_LIMIT);
 	SUBCATEGORY(1, 9, cout << endl << FG_LGRAY << "subcategory: s" << RESET_ALL << endl;)
 	TEST(1, print("% s", ""));
-	TEST(2, print(" % 1s", ""));
-	TEST(3, print("% 1s ", ""));
+	TEST(2, print(" % s", ""));
+	TEST(3, print("% s ", ""));
 	TEST(4, print(" % s ", ""));
 	TEST(5, print(" % s ", "-"));
 	TEST(6, print(" % s % s ", "", "-"));

@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 12:08:37 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/18 12:32:17 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/19 01:19:41 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_uitoa(unsigned int n)
 	return (str);
 }
 
-int	ft_print_unsigned(unsigned int n)
+int	ft_print_unsigned(unsigned int n, t_flags *flags)
 {
 	int		len;
 	char	*nbr;
@@ -43,8 +43,10 @@ int	ft_print_unsigned(unsigned int n)
 	}
 	else
 	{
+		if (flags->zero)
+			len += ft_print_zero(n, flags, 0);
 		nbr = ft_uitoa(n);
-		len = ft_print_str(nbr);
+		len += ft_print_str(nbr);
 		free(nbr);
 	}
 	return (len);

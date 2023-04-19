@@ -6,14 +6,14 @@
 #    By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 01:34:02 by wcorrea-          #+#    #+#              #
-#    Updated: 2023/04/18 12:29:22 by wcorrea-         ###   ########.fr        #
+#    Updated: 2023/04/18 21:44:48 by wcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRC = ft_printf.c ft_print_std.c ft_print_hex.c ft_print_unsigned.c \
-		ft_print_address.c
+		ft_print_address.c ft_check_flags.c ft_flags_utils.c
 
 OBJS = ${SRC:.c=.o}
 
@@ -37,12 +37,14 @@ all:	${NAME}
 
 clean:
 		${MAKE} ${LIBFT_PATH} clean
-		${RM} ${OBJS} ${BONUS_OBJS}
+		${RM} ${OBJS}
 
 fclean: clean
 		${MAKE} ${LIBFT_PATH} fclean
 		${RM} ${NAME}
 
+bonus: all
+
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

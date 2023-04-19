@@ -6,51 +6,58 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:50:38 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/18 12:32:13 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/18 21:48:04 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_formats(va_list args, const char format)
+
+
+int	ft_formats(va_list args, const char *str, size_t *i)
 {
-	int	buffer;
+	int		buffer;
+	t_flags	*flags;
 
 	buffer = 0;
-	if (format == 'c')
+	flags = ft_check_flags(str, i);
+	if (str[*i] == 'c')
 		buffer += ft_print_chr(va_arg(args, int));
-	else if (format == 's')
+	else if (str[*i] == 's')
 		buffer += ft_print_str(va_arg(args, char *));
-	else if (format == 'd' || format == 'i')
-		buffer += ft_print_nbr(va_arg(args, int));
-	else if (format == 'x' || format == 'X')
-		buffer += ft_print_hex(va_arg(args, unsigned int), format);
-	else if (format == 'u')
-		buffer += ft_print_unsigned(va_arg(args, unsigned int));
-	else if (format == 'p')
+	else if (str[*i] == 'd' || str[*i] == 'i')
+		buffer += ft_print_nbr(va_arg(args, int), flags);
+	else if (str[*i] == 'x' || str[*i] == 'X')
+		buffer += ft_print_hex(va_arg(args, unsigned int), str[*i], flags);
+	else if (str[*i] == 'u')
+		buffer += ft_print_unsigned(va_arg(args, unsigned int), flags);
+	else if (str[*i] == 'p')
 		buffer += ft_print_address(va_arg(args, unsigned long long));
-	else if (format == '%')
+	else if (str[*i] == '%')
 		buffer += ft_print_percent();
+	free(flags);
 	return (buffer);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
+	size_t	i;
 	int		buffer;
 
 	buffer = 0;
+	i = 0;
 	va_start(args, str);
-	while (*str)
+	while (str[i])
 	{
-		if (*str == '%')
+		if (str[i] == '%')
 		{
-			str++;
-			buffer += ft_formats(args, *str);
+			i++;
+			buffer += ft_formats(args, str, &i);
 		}
 		else
-			buffer += ft_print_chr(*str);
-		str++;
+			buffer += ft_print_chr(str[i]);
+		i++;
 	}
 	va_end(args);
 	return (buffer);
