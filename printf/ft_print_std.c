@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:56:42 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 01:48:47 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:16:39 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,33 @@ int	ft_print_percent(void)
 	return (1);
 }
 
-int	ft_print_chr(int c)
+int	ft_print_chr(int c, t_flags *flags)
 {
+	int len;
+
+	len = 0;
 	ft_putchar(c);
-	return (1);
+	len += 1;
+	if (flags->minus)
+		len += ft_print_justify(flags, 1);
+	return (len);
 }
 
-int	ft_print_str(char *s)
+int	ft_print_str(char *s, t_flags *flags)
 {
+	int len;
+	
+	len = 0;
 	if (!s)
 	{
 		ft_putstr("(null)");
 		return (6);
 	}
 	ft_putstr(s);
-	return (ft_strlen(s));
+	len += ft_strlen(s);
+	if (flags->minus)
+		len += ft_print_justify(flags, len);
+	return (len);
 }
 
 int	ft_print_nbr(int n, t_flags *flags)
@@ -54,26 +66,16 @@ int	ft_print_nbr(int n, t_flags *flags)
 	char	*nbr;
 
 	len = 0;
-	if (flags->space && n >= 0)
-		len += ft_print_chr(' ');
-	else if (flags->plus && n >= 0)
-		len += ft_print_chr('+');
-	else if (flags->zero)
-	{
-		if (n < 0)
-		{
-			len += ft_print_chr('-');
-			n = -n;
-			flags->width--;
-		}
-		len += ft_print_zero(n, flags, 0);
-	}
-	if (n == INT_MIN && flags->zero)
-		len += ft_print_str("2147483648");
+	if (flags->zero)
+		len += ft_print_zero_nbr(n, flags);
 	else
 	{
+		if (flags->space && n >= 0)
+			len += ft_print_chr(' ', flags);
+		else if (flags->plus && n >= 0)
+			len += ft_print_chr('+', flags);
 		nbr = ft_itoa(n);
-		len += ft_print_str(nbr);
+		len += ft_print_str(nbr, flags);
 		free(nbr);
 	}
 	return (len);

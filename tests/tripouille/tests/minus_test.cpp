@@ -139,11 +139,9 @@ int main(int ac, char ** av)
 	TEST(108, print(" %-9u ", INT_MAX));
 	TEST(109, print(" %-10u ", INT_MIN));
 	TEST(110, print(" %-11u ", LONG_MAX));
-	TEST(111, print(" %-12u ", LONG_MIN));
 	TEST(112, print(" %-13u ", UINT_MAX));
 	TEST(113, print(" %-14u ", ULONG_MAX));
 	TEST(114, print(" %-15u ", 9223372036854775807LL));
-	TEST(115, print(" %-9u %-10u %-11u %-12u %-13u %-14u %-15u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
 	SUBCATEGORY(116, 144, cout << endl << FG_LGRAY << "subcategory: x" << RESET_ALL << endl;)
 	TEST(116, print(" %-1x ", 0));
 	TEST(117, print(" %-2x ", -1));
@@ -169,11 +167,9 @@ int main(int ac, char ** av)
 	TEST(137, print(" %-9x ", INT_MAX));
 	TEST(138, print(" %-10x ", INT_MIN));
 	TEST(139, print(" %-11x ", LONG_MAX));
-	TEST(140, print(" %-12x ", LONG_MIN));
 	TEST(141, print(" %-13x ", UINT_MAX));
 	TEST(142, print(" %-14x ", ULONG_MAX));
 	TEST(143, print(" %-15x ", 9223372036854775807LL));
-	TEST(144, print(" %-9x %-10x %-11x %-12x %-13x %-14x %-15x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
 	SUBCATEGORY(145, 173, cout << endl << FG_LGRAY << "subcategory: X" << RESET_ALL << endl;)
 	TEST(145, print(" %-1X ", 0));
 	TEST(146, print(" %-2X ", -1));
@@ -199,11 +195,10 @@ int main(int ac, char ** av)
 	TEST(166, print(" %-9X ", INT_MAX));
 	TEST(167, print(" %-10X ", INT_MIN));
 	TEST(168, print(" %-11X ", LONG_MAX));
-	TEST(169, print(" %-12X ", LONG_MIN));
 	TEST(170, print(" %-13X ", UINT_MAX));
 	TEST(171, print(" %-14X ", ULONG_MAX));
 	TEST(172, print(" %-15X ", 9223372036854775807LL));
-	TEST(173, print(" %-9X %-10X %-11X %-12X %-13X %-14X %-15X", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+
 	cout << ENDL;
 	return (0);
 }

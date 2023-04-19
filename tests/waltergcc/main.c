@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 00:24:18 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 01:35:52 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:02:31 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,14 @@ int	main(void)
 
 	// or = printf("Or: %0c - %0s - %0d - %0x - %0X - %0% - %0u - %0p\n", c, s, n, hex, hex, u, &c);
 	printf("\nZero:\n");
-	or = printf("Or: %04d - %05x - %05X - %05u", -13, hex, hex, u);
+	or = printf("Or: %01d - %05x - %05X - %05u", 0, hex, hex, u);
 	printf(" - Return: %d\n", or);
-	ft = ft_printf("My: %04d - %05x - %05X - %05u", -13, hex, hex, u);
+	ft = ft_printf("My: %041d - %05x - %05X - %05u", 0, hex, hex, u);
 	printf(" - Return: %d\n", ft);
 
+	printf("\nminus:\n");
+	or = printf("Or: %-10c - %-16s - %-15d - %-5x - %-5X - %-4p", c, s, 0, hex, hex, &c);
+	printf(" - Return: %d\n", or);
+	ft = ft_printf("My: %-10c - %-16s - %-15d - %-5x - %-5X - %-4p", c, s, 0, hex, hex, &c);
+	printf(" - Return: %d\n", ft);
 }

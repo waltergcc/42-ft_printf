@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:07:48 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 01:19:38 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:18:53 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ int	ft_print_hex(unsigned int n, const char format, t_flags *flags)
 		return (1);
 	}
 	if (flags->hashtag && format == 'x')
-		len += ft_print_str("0x");
+		len += ft_print_str("0x", flags);
 	else if (flags->hashtag && format == 'X')
-		len += ft_print_str("0X");
+		len += ft_print_str("0X", flags);
 	else if (flags->zero)
 		len += ft_print_zero(n, flags, 1);
 	ft_put_hex(n, format);
+	if (flags->minus)
+		len += ft_print_justify(flags, ft_nbrlen(n, 16));		
 	return (len + ft_nbrlen(n, 16));
 }

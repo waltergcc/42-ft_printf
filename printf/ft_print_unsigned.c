@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 12:08:37 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 01:19:41 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:49:53 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_print_unsigned(unsigned int n, t_flags *flags)
 		if (flags->zero)
 			len += ft_print_zero(n, flags, 0);
 		nbr = ft_uitoa(n);
-		len += ft_print_str(nbr);
+		len += ft_print_str(nbr, flags);
 		free(nbr);
 	}
 	return (len);

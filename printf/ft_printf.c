@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:50:38 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/18 21:48:04 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:51:57 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_formats(va_list args, const char *str, size_t *i)
 	buffer = 0;
 	flags = ft_check_flags(str, i);
 	if (str[*i] == 'c')
-		buffer += ft_print_chr(va_arg(args, int));
+		buffer += ft_print_chr(va_arg(args, int), flags);
 	else if (str[*i] == 's')
-		buffer += ft_print_str(va_arg(args, char *));
+		buffer += ft_print_str(va_arg(args, char *), flags);
 	else if (str[*i] == 'd' || str[*i] == 'i')
 		buffer += ft_print_nbr(va_arg(args, int), flags);
 	else if (str[*i] == 'x' || str[*i] == 'X')
@@ -32,7 +32,7 @@ int	ft_formats(va_list args, const char *str, size_t *i)
 	else if (str[*i] == 'u')
 		buffer += ft_print_unsigned(va_arg(args, unsigned int), flags);
 	else if (str[*i] == 'p')
-		buffer += ft_print_address(va_arg(args, unsigned long long));
+		buffer += ft_print_address(va_arg(args, unsigned long long), flags);
 	else if (str[*i] == '%')
 		buffer += ft_print_percent();
 	free(flags);
@@ -56,7 +56,10 @@ int	ft_printf(const char *str, ...)
 			buffer += ft_formats(args, str, &i);
 		}
 		else
-			buffer += ft_print_chr(str[i]);
+		{
+			ft_putchar(str[i]);
+			buffer++;
+		}
 		i++;
 	}
 	va_end(args);
