@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:56:42 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/20 00:27:38 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 00:52:41 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_print_percent(void)
 
 int	ft_print_chr(int c, t_flags *flags)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	ft_putchar(c);

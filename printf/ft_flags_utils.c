@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 21:43:50 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 15:54:16 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 01:01:18 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,27 @@
 int	ft_print_zero_nbr(int n, t_flags *flags)
 {
 	char	*nbr;
-	int	size;
-	int	i;
+	int		size;
+	int		i;
 
 	i = 0;
 	if (n == 0)
+		return (ft_print_chr('0', flags));
+	if (n < 0)
+	{
+		i += ft_print_chr('-', flags);
+		n = -n;
+	}
+	size = flags->width - ft_nbrlen(n, 10);
+	while (i < size)
 		i += ft_print_chr('0', flags);
+	if (n == INT_MIN)
+		i += ft_print_str("2147483648", flags);
 	else
 	{
-		if (n < 0)
-		{
-			i += ft_print_chr('-', flags);
-			n = -n;
-		}
-		size = flags->width - ft_nbrlen(n, 10);
-		while (i < size)
-			i += ft_print_chr('0', flags);
-		if (n == INT_MIN)
-			i += ft_print_str("2147483648", flags);
-		else
-		{
-			nbr = ft_itoa(n);
-			i += ft_print_str(nbr, flags);
-			free(nbr);
-		}
+		nbr = ft_itoa(n);
+		i += ft_print_str(nbr, flags);
+		free(nbr);
 	}
 	return (i);
 }

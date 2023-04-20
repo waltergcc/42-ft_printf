@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:54:53 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/20 00:22:53 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 00:53:22 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_flags
 	int	precision;
 	int	numbers;
 }		t_flags;
-
 
 int		ft_printf(const char *str, ...);
 int		ft_formats(va_list args, const char *str, size_t *i);

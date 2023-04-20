@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 01:07:48 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 18:18:53 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 00:54:13 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ int	ft_print_hex(unsigned int n, const char format, t_flags *flags)
 		len += ft_print_zero(n, flags, 1);
 	ft_put_hex(n, format);
 	if (flags->minus)
-		len += ft_print_justify(flags, ft_nbrlen(n, 16));		
+		len += ft_print_justify(flags, ft_nbrlen(n, 16));
 	return (len + ft_nbrlen(n, 16));
 }

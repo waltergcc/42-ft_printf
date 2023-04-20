@@ -6,13 +6,11 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:50:38 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 15:51:57 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 00:53:52 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
 
 int	ft_formats(va_list args, const char *str, size_t *i)
 {
