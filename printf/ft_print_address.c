@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 12:46:20 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/19 23:26:11 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 01:27:41 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ int	ft_print_address(unsigned long long n, t_flags *flags)
 		len += ft_print_str("(nil)", flags);
 	else
 	{
+		if (flags->only_number)
+			len += ft_print_justify_before(flags, ft_address_len(n) + 2);
 		ft_putstr("0x");
 		len += 2;
 		ft_put_address(n);
 		len += ft_address_len(n);
 		if (flags->minus)
-			len += ft_print_justify(flags, ft_address_len(n) + 2);
+			len += ft_print_justify_after(flags, ft_address_len(n) + 2);
 	}
 	return (len);
 }

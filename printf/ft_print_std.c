@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:56:42 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/20 00:52:41 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 03:51:00 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ int	ft_print_chr(int c, t_flags *flags)
 	int	len;
 
 	len = 0;
+	if (flags->only_number)
+		len += ft_print_justify_before(flags, 1);
 	ft_putchar(c);
 	len += 1;
 	if (flags->minus)
-		len += ft_print_justify(flags, 1);
+		len += ft_print_justify_after(flags, 1);
 	return (len);
 }
 
@@ -53,12 +55,16 @@ int	ft_print_str(char *s, t_flags *flags)
 		ft_putstr("(null)");
 		return (6);
 	}
+	if (flags->dot)
+		return (ft_precision_str(flags, s));
+	if (flags->only_number)
+		len += ft_print_justify_before(flags, ft_strlen(s));
 	ft_putstr(s);
 	len += ft_strlen(s);
 	if (len == 0 && flags->numbers)
 		len += ft_print_chr(' ', flags);
 	if (flags->minus && flags->numbers)
-		len += ft_print_justify(flags, len);
+		len += ft_print_justify_after(flags, len);
 	return (len);
 }
 
@@ -70,6 +76,8 @@ int	ft_print_nbr(int n, t_flags *flags)
 	len = 0;
 	if (flags->zero)
 		len += ft_print_zero_nbr(n, flags);
+	else if (flags->dot)
+		len += ft_precision_nbr(flags, n);
 	else
 	{
 		if (flags->space && n >= 0)

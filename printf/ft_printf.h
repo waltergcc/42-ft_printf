@@ -6,7 +6,7 @@
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 17:54:53 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/20 00:53:22 by wcorrea-         ###   ########.fr       */
+/*   Updated: 2023/04/20 04:39:02 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdio.h>
 # include <limits.h>
 # include "libft/libft.h"
-
-# define EMPTY ""
 
 typedef struct s_flags
 {
@@ -31,6 +29,7 @@ typedef struct s_flags
 	int	width;
 	int	precision;
 	int	numbers;
+	int	only_number;
 }		t_flags;
 
 int		ft_printf(const char *str, ...);
@@ -50,6 +49,10 @@ t_flags	*ft_check_flags(const char *str, size_t *i);
 t_flags	*ft_flags_list(void);
 int		ft_print_zero_nbr(int n, t_flags *flags);
 int		ft_print_zero(int n, t_flags *flags, int hex);
-int		ft_print_justify(t_flags *flags, int n);
+int		ft_print_justify_after(t_flags *flags, int n);
+int		ft_print_justify_before(t_flags *flags, int n);
+int		ft_precision_str(t_flags *flags, char *s);
+int		ft_precision_nbr(t_flags *flags, int n);
+int		ft_precision_others(int n, t_flags *flags, int hex);
 
 #endif

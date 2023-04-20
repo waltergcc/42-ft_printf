@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flags_utils.c                                   :+:      :+:    :+:   */
+/*   ft_precision_print.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 21:43:50 by wcorrea-          #+#    #+#             */
-/*   Updated: 2023/04/20 03:20:08 by wcorrea-         ###   ########.fr       */
+/*   Created: 2023/04/20 02:01:30 by wcorrea-          #+#    #+#             */
+/*   Updated: 2023/04/20 04:25:58 by wcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_zero_nbr(int n, t_flags *flags)
+int	ft_precision_nbr(t_flags *flags, int n)
 {
 	char	*nbr;
-	int		size;
 	int		i;
 
 	i = 0;
+	flags->dot = 0;
 	if (n == 0)
 		return (ft_print_chr('0', flags));
 	if (n < 0)
@@ -26,8 +26,7 @@ int	ft_print_zero_nbr(int n, t_flags *flags)
 		i += ft_print_chr('-', flags);
 		n = -n;
 	}
-	size = flags->width - ft_nbrlen(n, 10);
-	while (i < size)
+	while (flags->precision-- > ft_nbrlen(n, 10))
 		i += ft_print_chr('0', flags);
 	if (n == INT_MIN)
 		i += ft_print_str("2147483648", flags);
@@ -40,43 +39,35 @@ int	ft_print_zero_nbr(int n, t_flags *flags)
 	return (i);
 }
 
-int	ft_print_justify_before(t_flags *flags, int n)
+int	ft_precision_others(int n, t_flags *flags, int hex)
 {
-	int	i;
-
-	i = 0;
-	if (flags->only_number)
-		flags->only_number = 0;
-	while (i < flags->width - n)
-		i += ft_print_chr(' ', flags);
-	return (i);
-}
-
-int	ft_print_justify_after(t_flags *flags, int n)
-{
-	int	i;
-
-	i = 0;
-	if (flags->minus)
-		flags->minus = 0;
-	while (i < flags->width - n)
-		i += ft_print_chr(' ', flags);
-	return (i);
-}
-
-int	ft_print_zero(int n, t_flags *flags, int hex)
-{
-	int	size;
+	int	len;
 	int	i;
 
 	i = 0;
 	if (hex)
-		size = flags->width - ft_nbrlen(n, 16);
+		len = ft_nbrlen(n, 16);
 	else
-		size = flags->width - ft_nbrlen(n, 10);
+		len = ft_nbrlen(n, 10);
 	if (n == 0)
 		return (0);
-	while (i < size)
+	while (flags->precision-- > len)
 		i += ft_print_chr('0', flags);
+	flags->dot = 0;
+	return (i);
+}
+
+int	ft_precision_str(t_flags *flags, char *s)
+{
+	int	i;
+
+	i = 0;
+	flags->dot = 0;
+	while (*s && flags->precision > 0)
+	{
+		i += ft_print_chr(*s, flags);
+		flags->precision--;
+		s++;
+	}
 	return (i);
 }
