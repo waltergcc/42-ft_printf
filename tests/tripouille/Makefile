@@ -3,7 +3,7 @@ TIMEOUT_US 		= 150000 #if you timeout you can try to increase this value
 .DEFAULT_GOAL	:= m
 SHELL			= bash
 
-PRINTF = ../../printf
+PRINTF = /nfs/homes/wcorrea-/workspace/evaluations/1-printf/franalme
 
 UTILS_PATH		= utils/
 UTILS			= $(addprefix $(UTILS_PATH), sigsegv.cpp color.cpp check.cpp leaks.cpp)
