@@ -6,7 +6,7 @@
 #    By: wcorrea- <wcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 01:34:02 by wcorrea-          #+#    #+#              #
-#    Updated: 2023/04/20 02:02:37 by wcorrea-         ###   ########.fr        #
+#    Updated: 2023/04/22 19:54:32 by wcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ MAKE = make -C
 LIBFT_PATH = libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
-.c.o:
+.o:.c
 		${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
